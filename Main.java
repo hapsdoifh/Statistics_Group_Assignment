@@ -30,5 +30,4 @@ public class Main {
         RefineryUtilities.centerFrameOnScreen(demo);
         demo.setVisible(true);
     }
-
 }
