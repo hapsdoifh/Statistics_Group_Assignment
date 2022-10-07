@@ -8,4 +8,12 @@ interface Stats{
 }
 
 public class Statistic {
+    private double[] statsArray;
+
+    public void setArray(double[] inputArr){
+        statsArray = inputArr;
+    }
+    public double[] getArray(){
+        return statsArray;
+    }
 }
