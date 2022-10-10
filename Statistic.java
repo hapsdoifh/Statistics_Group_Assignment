@@ -2,8 +2,8 @@
 import java.lang.Math;
 import java.util.Arrays;
 interface Stats{
-    public double max(double[] List);
-    public double min(double[] List);
+    public double Max(double[] List);
+    public double Min(double[] List);
     public double Mean(double[] List);
     public double Median(double[] List);
     public double Mode(double[] List);
