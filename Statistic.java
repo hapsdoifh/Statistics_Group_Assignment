@@ -1,4 +1,3 @@
-
 import java.lang.Math;
 import java.util.Arrays;
 interface Stats{

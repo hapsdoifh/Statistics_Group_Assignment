@@ -25,6 +25,7 @@ public class outputGUI extends JPanel{
         int Offset = 10;
         double PixelIncre = (double)GraphStats.Range()/(double)(Xsize-2*Offset);
         int Vstart = Ysize/2-GrHeight/2,Hstart = Offset;
+        int VEnd = Vstart+GrHeight;
 
         NewG.setColor(plotColor);
         NewG.fillRect(Xsize, Ysize, WIDTH, HEIGHT);
@@ -38,15 +39,22 @@ public class outputGUI extends JPanel{
         NewG.drawLine((int)(Quarts[0]/PixelIncre)+2+Offset, Vstart+GrHeight, (int)(Quarts[2]/PixelIncre)+2+Offset, Vstart+GrHeight);
         NewG.drawLine(Hstart+2,Vstart+GrHeight/2,Xsize-Offset-2,Vstart+GrHeight/2);
         NewG.fillRect(Xsize-Offset-4, Vstart, 4, GrHeight);
+        NewG.setColor(new Color(150,150,100));
+        int testVoffset=15;
+        for (int i = 0; i<3;i++){
+            NewG.drawString(Quarts[i]+"",(int)(Quarts[i]/PixelIncre)+Offset-10, VEnd+testVoffset);
+        }
+        NewG.drawString(GraphStats.getArray()[0]+"", Hstart-10, VEnd+testVoffset);
+        NewG.drawString(GraphStats.getArray()[GraphStats.getArray().length-1]+"", Xsize-Offset-10, VEnd+testVoffset);
     }
     public static void outputGraph(Statistic statsParam){
         JFrame GraphingFrame = new JFrame("Graph output");
         outputGUI DrawGUI = new outputGUI();
-        GraphingFrame.setSize(300, 300);
+        GraphingFrame.setSize(600, 300);
         DrawGUI.setGphStats(statsParam);
         GraphingFrame.add(DrawGUI);
-        DrawGUI.SetDrawSize(300, 300);
-        DrawGUI.setPreferredSize(new Dimension(300,300));
+        DrawGUI.SetDrawSize(600, 300);
+        DrawGUI.setPreferredSize(new Dimension(600,300));
         GraphingFrame.getContentPane().getPreferredSize();
         GraphingFrame.pack();
         GraphingFrame.setVisible(true);
