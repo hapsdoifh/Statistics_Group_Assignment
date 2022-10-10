@@ -37,6 +37,7 @@ public class Statistic {
         return results;
     }
     public double[] SortList(double[] List){
-        return null;
+        Arrays.sort(List);        
+        return List;
     }
 }
