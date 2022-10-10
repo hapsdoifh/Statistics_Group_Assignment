@@ -27,10 +27,27 @@ public class Main {
         for (double element: stat.getArray()) {
             System.out.print(element + " ");
         }
-
-        stat.setMean();
+        
         //calculate and display mean from user's data values
-        System.out.println("\nThe mean is: " + stat.getMean());
+        System.out.println("\nThe mean is: " + stat.Mean());
+        
+        //calculate and display median from user's data values
+        System.out.println("\nThe median is: " + stat.Median());
+
+        //calculate and display mode from user's data values
+        System.out.println("\nThe mode is: " + stat.Mode());
+
+        //calculate and display max value from user's data values
+        System.out.println("\nThe largest value is: " + stat.Max());
+
+        //calculate and display min value from user's data values
+        System.out.println("\nThe smallest value is: " + stat.Min());
+        
+        //calculate and display range from user's data values
+        System.out.println("\nThe smallest value is: " + stat.Range());
+        
+        //calculate and display quartiles from user's data values
+        System.out.println("\nThe quartiles for this set of numbers are: " + stat.Quartiles());
 
         stat.setSD();
         //calculate and display standard deviation from user's data values
@@ -52,7 +69,7 @@ public class Main {
                     System.out.println("Could not display distribution graph.");
                 }
             }
-        });
+        }
     }
 
 }
