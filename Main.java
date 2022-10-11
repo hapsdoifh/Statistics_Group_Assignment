@@ -29,22 +29,22 @@ public class Main {
         }
         
         //calculate and display mean from user's data values
-        System.out.println("\nThe mean is: " + averages.getMean());
+        System.out.println("\nThe mean is: " + stat.getMean());
         
         //calculate and display median from user's data values
-        System.out.println("\nThe median is: " + averages.getMedian());
+        System.out.println("\nThe median is: " + stat.getMedian());
 
         //calculate and display mode from user's data values
-        System.out.println("\nThe mode is: " + averages.getMode());
+        System.out.println("\nThe mode is: " + stat.getMode());
 
         //calculate and display max value from user's data values
-        System.out.println("\nThe largest value is: " + averages.getMax());
+        System.out.println("\nThe largest value is: " + stat.getMax());
 
         //calculate and display min value from user's data values
-        System.out.println("\nThe smallest value is: " + averages.getMin());
+        System.out.println("\nThe smallest value is: " + stat.getMin());
         
         //calculate and display range from user's data values
-        System.out.println("\nThe smallest value is: " + averages.getRange());
+        System.out.println("\nThe smallest value is: " + stat.getRange());
         
         //calculate and display quartiles from user's data values
         System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
