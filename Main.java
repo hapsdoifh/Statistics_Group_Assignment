@@ -45,7 +45,7 @@ public class Main {
         System.out.println("\nThe smallest value is: " + averages.Min());
         
         //calculate and display range from user's data values
-        System.out.println("\nThe smallest value is: " + stat.Range());
+        System.out.println("\nThe smallest value is: " + averages.Range());
         
         //calculate and display quartiles from user's data values
         System.out.println("\nThe quartiles for this set of numbers are: " + stat.Quartiles());
