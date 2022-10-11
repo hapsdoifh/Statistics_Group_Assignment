@@ -30,19 +30,19 @@ public class Main {
         }
         
         //calculate and display mean from user's data values
-        System.out.println("\nThe mean is: " + stat.Mean());
+        System.out.println("\nThe mean is: " + averages.Mean());
         
         //calculate and display median from user's data values
-        System.out.println("\nThe median is: " + stat.Median());
+        System.out.println("\nThe median is: " + averages.Median());
 
         //calculate and display mode from user's data values
-        System.out.println("\nThe mode is: " + stat.Mode());
+        System.out.println("\nThe mode is: " + averages.Mode());
 
         //calculate and display max value from user's data values
-        System.out.println("\nThe largest value is: " + stat.Max());
+        System.out.println("\nThe largest value is: " + averages.Max());
 
         //calculate and display min value from user's data values
-        System.out.println("\nThe smallest value is: " + stat.Min());
+        System.out.println("\nThe smallest value is: " + averages.Min());
         
         //calculate and display range from user's data values
         System.out.println("\nThe smallest value is: " + stat.Range());
@@ -65,7 +65,7 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    new NormalDistribution(stat.getMean(), stat.getSD()).setVisible(true);
+                    new NormalDistribution(averages.getMean(), stat.getSD()).setVisible(true);
                 } catch (Exception exp) {
                     System.out.println("Could not display distribution graph.");
                 }
