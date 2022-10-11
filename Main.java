@@ -9,7 +9,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Statistic stat = new Statistic();
         StandardDeviation SD = new StandardDeviation();
-        medianMeanMode averages = new medianMeanMode();
 
         double[] input_array = new double[10];
 
@@ -30,25 +29,25 @@ public class Main {
         }
         
         //calculate and display mean from user's data values
-        System.out.println("\nThe mean is: " + averages.Mean());
+        System.out.println("\nThe mean is: " + averages.getMean());
         
         //calculate and display median from user's data values
-        System.out.println("\nThe median is: " + averages.Median());
+        System.out.println("\nThe median is: " + averages.getMedian());
 
         //calculate and display mode from user's data values
-        System.out.println("\nThe mode is: " + averages.Mode());
+        System.out.println("\nThe mode is: " + averages.getMode());
 
         //calculate and display max value from user's data values
-        System.out.println("\nThe largest value is: " + averages.Max());
+        System.out.println("\nThe largest value is: " + averages.getMax());
 
         //calculate and display min value from user's data values
-        System.out.println("\nThe smallest value is: " + averages.Min());
+        System.out.println("\nThe smallest value is: " + averages.getMin());
         
         //calculate and display range from user's data values
-        System.out.println("\nThe smallest value is: " + averages.Range());
+        System.out.println("\nThe smallest value is: " + averages.getRange());
         
         //calculate and display quartiles from user's data values
-        System.out.println("\nThe quartiles for this set of numbers are: " + stat.Quartiles());
+        System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
 
         stat.setSD();
         //calculate and display standard deviation from user's data values
