@@ -20,14 +20,16 @@ public class BoxPlot extends ApplicationFrame {
 
         Color color = new Color(167, 245, 255);
 
-        final DefaultBoxAndWhiskerCategoryDataset dataset = createDataset(array);
-        final CategoryPlot boxPlot = renderBoxPlot(dataset);
-        final JFreeChart chart = createChart(boxPlot);
-        final ChartPanel chartPanel = new ChartPanel(chart);
+        final DefaultBoxAndWhiskerCategoryDataset dataset = createDataset(array); //gets user's dataset
+        final CategoryPlot boxPlot = renderBoxPlot(dataset); //uses dataset to create box plot
+        final JFreeChart chart = createChart(boxPlot); //creates chart for box plot
+        final ChartPanel chartPanel = new ChartPanel(chart);//uses chartpanel to display box plot
         chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
         chart.getPlot().setBackgroundPaint(color);
         setContentPane(chartPanel);
     }
+
+    //specifies colors, styles, and axis for box plot chart
     private CategoryPlot renderBoxPlot(DefaultBoxAndWhiskerCategoryDataset dataset) {
 
         BoxAndWhiskerRenderer renderer = new BoxAndWhiskerRenderer();
@@ -52,6 +54,8 @@ public class BoxPlot extends ApplicationFrame {
 
         return plot;
     }
+
+    //creates and returns a dataset for the box plot
     private DefaultBoxAndWhiskerCategoryDataset createDataset(double [] userArray) {
 
         DefaultBoxAndWhiskerCategoryDataset dataset = new
@@ -66,6 +70,8 @@ public class BoxPlot extends ApplicationFrame {
 
         return dataset;
     }
+
+    //creates chart for box plot
     private JFreeChart createChart(
             final CategoryPlot boxPlot) {
 

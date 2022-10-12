@@ -9,6 +9,8 @@ interface Stats{
     public double getRange();
     public double[] Quartiles();
     public double[] SortList();
+    public void setSD();
+    public double getSD();
 }
 
 public class Statistic implements Stats{
@@ -138,6 +140,15 @@ public class Statistic implements Stats{
     //return Math.round((highest - lowest) *100.0) / 100.0;
   } // getter end bracket
 
+
+  public void setSD() {
+      StandardDeviation sd = new StandardDeviation();
+      this.sd = sd.calculateSD(statsArray, mean);
+  }
+
+  public double getSD() {
+      return sd;
+  }
 
   
 }

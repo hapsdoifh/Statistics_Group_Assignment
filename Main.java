@@ -34,6 +34,7 @@ public class Main {
         //calculate and display median from user's data values
         System.out.println("\nThe median is: " + stat.getMedian());
 
+
         //calculate and display mode from user's data values
         System.out.println("\nThe mode is: " + stat.getMode());
 
@@ -64,13 +65,12 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    new NormalDistribution(averages.getMean(), stat.getSD()).setVisible(true);
+                    new NormalDistribution(stat.getMean(), stat.getSD()).setVisible(true);
                 } catch (Exception exp) {
                     System.out.println("Could not display distribution graph.");
                 }
             }
-        }
-
+        });
     }
 
 }

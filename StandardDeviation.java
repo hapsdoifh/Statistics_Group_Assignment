@@ -1,13 +1,11 @@
 public class StandardDeviation {
-    double[] userArray;
-    public static double calculateSD(double[] userArray) {
-        double sum = 0.0, standard_deviation = 0.0;
-        int array_length = userArray.length;
-        for(double temp : userArray) {
-            sum += temp;
-        }
 
-        double mean = sum/array_length;
+    //calculates standard deviation from user's data values
+    public double calculateSD(double[] userArray, double mean) {
+
+        double standard_deviation = 0.0;
+        int array_length = userArray.length;
+
         for(double temp: userArray) {
             standard_deviation += Math.pow(temp - mean, 2);
         }
