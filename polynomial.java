@@ -1,41 +1,25 @@
-import java.lang.Math;
 import java.util.Arrays;
-interface Stats{
-    public double getMax();
-    public double getMin();
-    public double getMean();
-    public double getMedian();
-    public double getMode();
-    public double getRange();
-    public String getPolynomial();
-    public int arrayLength();
-    public double[] Quartiles();
-    public double[] SortList();
-}
-
-public class Statistic implements Stats{
-    private double[] statsArray;
-
-    public void setArray(double[] inputArr){
-        statsArray = inputArr;
-    }
+public class Polynomial{
+    public double[] array;
+    Polynomial(double[] userInput){
+    array = userInput;
+  }
+    public String polynomial = "";
   
-    public int arrayLength(double[] statsArray){
-        
-    }
-  
-    public double[] getArray(){
-        return statsArray;
+    public int arrayLength(double[] userArray){
+        return userArray.length;
     }
 
     //getters
 
     public String getPolynomial() {
-        public String polynomial = "";
-        for (int i; i<arrayLength(statsArray); i++) {
-        polynomial = polynomial + statsArray[i] + "x"
-        
+      for (int i = 0; i < array.length; i++) {
+        if (i <= array.length - 2) {
+          polynomial = polynomial + array[i] + "x^" + (array.length - (i + 1)) + "+ ";
+        } else {
+          polynomial = polynomial + array[i] + "x^" + (array.length - (i + 1));
         }
-        return ("A polynomial function with your array of numbers as coefficients would be: " + polynomial);
+      }
+        return polynomial;
   }
 }
