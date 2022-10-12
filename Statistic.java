@@ -7,30 +7,30 @@ interface Stats{
     public double getMedian();
     public double getMode();
     public double getRange();
-    public double[] Quartiles();
+    public double[] getQuartiles();
     public double[] SortList();
     public double getSD();
 }
 
 public class Statistic implements Stats{
     private double[] statsArray;
-        
+
 
     double mean;
     double median;
-    double mode; 
+    double mode;
     public void setArray(double[] inputArr){
         statsArray = inputArr;
     }
     public double[] getArray(){
         return statsArray;
     }
-    public double[] Quartiles(){
+    public double[] getQuartiles(){
         double[] results = new double[3];
         double[] Qpos = new double [3];
-        Qpos[1] = (0+statsArray.length-1)/2.0;   
+        Qpos[1] = (0+statsArray.length-1)/2.0;
         Qpos[0] = (0+Qpos[1])/2.0;
-        Qpos[2] = (Qpos[1]+statsArray.length-1)/2.0;   
+        Qpos[2] = (Qpos[1]+statsArray.length-1)/2.0;
         for(int i = 0; i<3;i++){ //finding quartiles
             //System.out.println(Qpos[i]);
             results[i] = (double)statsArray[(int)Math.floor(Qpos[i])] + (double)(Qpos[i]-Math.floor(Qpos[i])) * (statsArray[(int)Math.ceil(Qpos[i])] - statsArray[(int)Math.floor(Qpos[i])]);
@@ -39,12 +39,12 @@ public class Statistic implements Stats{
         return results;
     }
     public double[] SortList(){
-        Arrays.sort(statsArray);        
+        Arrays.sort(statsArray);
         return statsArray;
     }
 
 
-  //getters
+    //getters
 
   // mean
     public double getMean(){
@@ -63,23 +63,21 @@ public class Statistic implements Stats{
     } else {
         median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
     }
-    return median;
-  }
 
-  // mode (tyson)
-  public double getMode(){ 
-    double sorted = 0.0; 
-    int highestCounter = 0;
-    
-    for (int i = 0; i < statsArray.length + 1; i++){
-        double sorter = statsArray[i];
-        int counter = 0;
-        
-        for (int n = i +1; n < statsArray.length; n++){
-            if (sorter == statsArray[n]){
-                counter++;
+    // mode (tyson)
+    public double getMode(){
+        double sorted = 0.0;
+        int highestCounter = 0;
+
+        for (int i = 0; i < statsArray.length + 1; i++){
+            double sorter = statsArray[i];
+            int counter = 0;
+
+            for (int n = i +1; n < statsArray.length; n++){
+                if (sorter == statsArray[n]){
+                    counter++;
+                }
             }
-        }
 
         if (counter > highestCounter){ 
             highestCounter = counter;
@@ -150,6 +148,7 @@ public class Statistic implements Stats{
             standard_deviation += Math.pow(temp - mean, 2);
         }
         return Math.sqrt(standard_deviation/array_length);
+
     }
 
 
@@ -157,5 +156,4 @@ public class Statistic implements Stats{
         return calculateSD(statsArray, this.getMean());
     }
 
-  
 }
