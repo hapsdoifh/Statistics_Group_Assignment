@@ -9,6 +9,7 @@ interface Stats{
     public double getRange();
     public double[] getQuartiles();
     public double[] SortList();
+    public double getSD();
 }
 
 public class Statistic implements Stats{
@@ -45,24 +46,22 @@ public class Statistic implements Stats{
 
     //getters
 
-    // mean
+  // mean
     public double getMean(){
         for (int i= 0; i< statsArray.length; i++){
-            mean += statsArray[i];
+            mean += statsArray[i]; 
         }
         return mean/statsArray.length;
     }
-
-    //median
-    public double getMedian(){
-        Arrays.sort(statsArray);
-        if (statsArray.length%2 != 0){
-
-            median = statsArray[statsArray.length/2];
-        } else {
-            median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
-        }
-        return median;
+  
+  //median
+  public double getMedian(){
+    Arrays.sort(statsArray);
+    if (statsArray.length%2 != 0){ 
+      
+        median = statsArray[statsArray.length/2];
+    } else {
+        median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
     }
 
     // mode (tyson)
@@ -80,25 +79,25 @@ public class Statistic implements Stats{
                 }
             }
 
-            if (counter > highestCounter){
-                highestCounter = counter;
-                sorted = sorter;
-            }
-            else if (counter == highestCounter){
-                sorted = Math.min(sorter, sorted);
-            }
-        } // for loop bracket
+        if (counter > highestCounter){ 
+            highestCounter = counter;
+            sorted = sorter;
+        }
+        else if (counter == highestCounter){
+            sorted = Math.min(sorter, sorted);
+        }
+    } // for loop bracket
+    
+  return highestCounter;
+  }
 
-        return highestCounter;
-    }
-
-    // max (tyson)
+  // max (tyson)
     public double getMax(){
-        double highest = 0;
-
+        double highest = 0; 
+    
         for (int i = 0; i > statsArray.length; i++){
             double listOrder = statsArray[i];
-
+            
             if (listOrder > highest){
                 highest = listOrder;
             }
@@ -107,7 +106,7 @@ public class Statistic implements Stats{
             }
         } // loop bracket
 
-        return highest;
+        return highest; 
     } // getter end bracket
 
     // min (tyson)
@@ -123,16 +122,16 @@ public class Statistic implements Stats{
 
             else if (listOrder >= lowest){
                 lowest = Math.min(listOrder, lowest);
-            }
+        }
         } // for loop bracket
 
         return lowest;
     } // getter end bracket
 
-    // range (tyson)
+  // range (tyson)
     public double getRange(){
         // use new variables to make code less messy (less brackets)
-        double highest = getMax();
+        double highest = getMax(); 
         double lowest = getMin();
         return highest-lowest;
         //return Math.round((highest - lowest) *100.0) / 100.0;
@@ -140,7 +139,7 @@ public class Statistic implements Stats{
 
 
     //calculates standard deviation from user's data values
-    public double getSD(double[] userArray, double mean) {
+        public double calculateSD(double[] userArray, double mean) {
 
         double standard_deviation = 0.0;
         int array_length = userArray.length;
@@ -149,7 +148,12 @@ public class Statistic implements Stats{
             standard_deviation += Math.pow(temp - mean, 2);
         }
         return Math.sqrt(standard_deviation/array_length);
-        }
+
+    }
+
+
+    public double getSD() {
+        return calculateSD(statsArray, this.getMean());
     }
 
 }
