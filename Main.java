@@ -1,3 +1,4 @@
+
 import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
@@ -8,7 +9,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Statistic stat = new Statistic();
         StandardDeviation SD = new StandardDeviation();
-        medianMeanMode averages = new medianMeanMode();
 
         double[] input_array = new double[10];
 
@@ -27,10 +27,28 @@ public class Main {
         for (double element: stat.getArray()) {
             System.out.print(element + " ");
         }
-
-        stat.setMean();
+        
         //calculate and display mean from user's data values
         System.out.println("\nThe mean is: " + stat.getMean());
+        
+        //calculate and display median from user's data values
+        System.out.println("\nThe median is: " + stat.getMedian());
+
+
+        //calculate and display mode from user's data values
+        System.out.println("\nThe mode is: " + stat.getMode());
+
+        //calculate and display max value from user's data values
+        System.out.println("\nThe largest value is: " + stat.getMax());
+
+        //calculate and display min value from user's data values
+        System.out.println("\nThe smallest value is: " + stat.getMin());
+        
+        //calculate and display range from user's data values
+        System.out.println("\nThe smallest value is: " + stat.getRange());
+        
+        //calculate and display quartiles from user's data values
+        System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
 
         stat.setSD();
         //calculate and display standard deviation from user's data values
