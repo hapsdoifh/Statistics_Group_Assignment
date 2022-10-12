@@ -1,11 +1,13 @@
 import java.lang.Math;
 import java.util.Arrays;
 interface Stats{
+    public int arrayLength();
     public double getMax();
     public double getMin();
     public double getMean();
     public double getMedian();
     public double getMode();
+    public String getPolynomial();
     public double getRange();
     public double[] getQuartiles();
     public double[] SortList();
@@ -15,7 +17,7 @@ interface Stats{
 public class Statistic implements Stats{
     private double[] statsArray;
 
-
+    String polynomial = "";
     double mean;
     double median;
     double mode;
@@ -25,6 +27,7 @@ public class Statistic implements Stats{
     public double[] getArray(){
         return statsArray;
     }
+    
     public double[] getQuartiles(){
         double[] results = new double[3];
         double[] Qpos = new double [3];
@@ -130,6 +133,18 @@ public class Statistic implements Stats{
         return lowest;
     } // getter end bracket
 
+    // Polynomial (Chase)
+    public String getPolynomial() {
+      for (int i = 0; i < statsArray.length; i++) {
+        if (i <= statsArray.length - 2) {
+          polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1)) + " + ";
+        } else {
+          polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1));
+        }
+      }
+        return polynomial;
+  }
+    
   // range (tyson)
     public double getRange(){
         // use new variables to make code less messy (less brackets)
