@@ -41,9 +41,12 @@ public class Main {
 
         //calculate and display min value from user's data values
         System.out.println("\nThe smallest value is: " + stat.getMin());
+        
+        //calculate and display min value from user's data values
+        System.out.println("\nA polynomial built from this set of numbers could look like: " + stat.getPolynomial());
 
         //calculate and display range from user's data values
-        System.out.println("\nThe smallest value is: " + stat.getRange());
+        System.out.println("\nThe range of this array is: " + stat.getRange());
 
         //calculate and display quartiles from user's data values
         System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
