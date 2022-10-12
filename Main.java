@@ -49,7 +49,7 @@ public class Main {
         System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
 
         //calculate and display standard deviation from user's data values
-        System.out.println(String.format("\n\nThe Standard Deviation is: %.6f", stat.getSD(stat.getArray(), stat.getMean())));
+        System.out.println(String.format("\n\nThe Standard Deviation is: %.6f", stat.getSD()));
 
         //display box and whiskers plot of user's data values
         final BoxPlot demo = new BoxPlot("Box and Whiskers Plot", input_array);
@@ -62,7 +62,7 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    new NormalDistribution(stat.getMean(), stat.getSD(stat.getArray(), stat.getMean())).setVisible(true);
+                    new NormalDistribution(stat.getMean(), stat.getSD()).setVisible(true);
                 } catch (Exception exp) {
                     System.out.println("Could not display distribution graph.");
                 }
