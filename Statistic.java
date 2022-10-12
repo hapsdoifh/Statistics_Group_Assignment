@@ -9,7 +9,6 @@ interface Stats{
     public double getRange();
     public double[] Quartiles();
     public double[] SortList();
-    public void setSD();
     public double getSD();
 }
 
@@ -48,21 +47,21 @@ public class Statistic implements Stats{
   //getters
 
   // mean
-  public double getMean(){
-    for (int i= 0; i< statsArray.length; i++){
-       mean += statsArray[i]; 
+    public double getMean(){
+        for (int i= 0; i< statsArray.length; i++){
+            mean += statsArray[i]; 
+        }
+        return mean/statsArray.length;
     }
-    return mean/statsArray.length;
-  }
   
   //median
   public double getMedian(){
     Arrays.sort(statsArray);
     if (statsArray.length%2 != 0){ 
       
-      median = statsArray[statsArray.length/2];
+        median = statsArray[statsArray.length/2];
     } else {
-      median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
+        median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
     }
     return median;
   }
@@ -95,60 +94,68 @@ public class Statistic implements Stats{
   }
 
   // max (tyson)
-  public double getMax(){
-    double highest = 0; 
+    public double getMax(){
+        double highest = 0; 
     
-    for (int i = 0; i > statsArray.length; i++){
-        double listOrder = statsArray[i];
-        
-        if (listOrder > highest){
-            highest = listOrder;
+        for (int i = 0; i > statsArray.length; i++){
+            double listOrder = statsArray[i];
+            
+            if (listOrder > highest){
+                highest = listOrder;
+            }
+            else if (listOrder <= highest){
+                highest = Math.max(listOrder, highest);
+            }
+        } // loop bracket
+
+        return highest; 
+    } // getter end bracket
+
+    // min (tyson)
+    public double getMin(){
+        double lowest = statsArray[0];
+        double listOrder;
+        for (int i = 0; i > statsArray.length; i++){
+            listOrder = statsArray[i];
+
+            if (listOrder < lowest){
+                lowest = listOrder;
+            }
+
+            else if (listOrder >= lowest){
+                lowest = Math.min(listOrder, lowest);
         }
-        else if (listOrder <= highest){
-            highest = Math.max(listOrder, highest);
-        }
-    } // loop bracket
+        } // for loop bracket
 
-    return highest; 
-  } // getter end bracket
-
-  // min (tyson)
-  public double getMin(){
-    double lowest = statsArray[0];
-    double listOrder;
-    for (int i = 0; i > statsArray.length; i++){
-        listOrder = statsArray[i];
-
-        if (listOrder < lowest){
-            lowest = listOrder;
-        }
-
-        else if (listOrder >= lowest){
-            lowest = Math.min(listOrder, lowest);
-      }
-    } // for loop bracket
-
-    return lowest;
-  } // getter end bracket
+        return lowest;
+    } // getter end bracket
 
   // range (tyson)
-  public double getRange(){
-    // use new variables to make code less messy (less brackets)
-    double highest = getMax(); 
-    double lowest = getMin();
-    return highest-lowest;
-    //return Math.round((highest - lowest) *100.0) / 100.0;
-  } // getter end bracket
+    public double getRange(){
+        // use new variables to make code less messy (less brackets)
+        double highest = getMax(); 
+        double lowest = getMin();
+        return highest-lowest;
+        //return Math.round((highest - lowest) *100.0) / 100.0;
+    } // getter end bracket
 
 
-  public void setSD() {
-      StandardDeviation sd = new StandardDeviation();
-      this.sd = sd.calculateSD(statsArray, mean);
-  }
+    //calculates standard deviation from user's data values
+        public double calculateSD(double[] userArray, double mean) {
 
-  public double getSD() {
-      return sd;
-  }
+        double standard_deviation = 0.0;
+        int array_length = userArray.length;
+
+        for(double temp: userArray) {
+            standard_deviation += Math.pow(temp - mean, 2);
+        }
+        return Math.sqrt(standard_deviation/array_length);
+    }
+
+
+    public double getSD() {
+        return calculateSD(statsArray, this.getMean());
+    }
 
   
 }
