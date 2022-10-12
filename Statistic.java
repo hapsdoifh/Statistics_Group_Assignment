@@ -57,13 +57,15 @@ public class Statistic implements Stats{
   //median
   public double getMedian(){
     Arrays.sort(statsArray);
-    if (statsArray.length%2 != 0){  
-        median = statsArray[statsArray.length/2];
+        if (statsArray.length%2 != 0){  
+            median = statsArray[statsArray.length/2];
+        }
+        else {
+            median = (statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
+        }
+        return median;
     }
-    else {
-        median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
-    }
-
+    
     // mode (tyson)
     public double getMode(){
         double sorted = 0.0;

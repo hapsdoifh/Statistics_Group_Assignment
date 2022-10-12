@@ -20,10 +20,10 @@ public class outputGUI extends JPanel{
     private void PaintBoxWhisker(Graphics g){
         Graphics2D NewG = (Graphics2D)g;
         Color plotColor = new Color(0,0,0);
-        double[] Quarts = GraphStats.Quartiles();
+        double[] Quarts = GraphStats.getQuartiles();
         int GrHeight = 50;
         int Offset = 10;
-        double PixelIncre = (double)GraphStats.Range()/(double)(Xsize-2*Offset);
+        double PixelIncre = (double)GraphStats.getRange()/(double)(Xsize-2*Offset);
         int Vstart = Ysize/2-GrHeight/2,Hstart = Offset;
         int VEnd = Vstart+GrHeight;
 
