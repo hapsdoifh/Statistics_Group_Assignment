@@ -57,10 +57,10 @@ public class Statistic implements Stats{
   //median
   public double getMedian(){
     Arrays.sort(statsArray);
-    if (statsArray.length%2 != 0){ 
-      
+    if (statsArray.length%2 != 0){  
         median = statsArray[statsArray.length/2];
-    } else {
+    }
+    else {
         median =(statsArray[(statsArray.length-1)/2]+statsArray[statsArray.length/2])/2;
     }
 
@@ -139,12 +139,12 @@ public class Statistic implements Stats{
 
 
     //calculates standard deviation from user's data values
-        public double calculateSD(double[] userArray, double mean) {
-
+    public double getSD() {
+        double mean = this.getMean();
         double standard_deviation = 0.0;
-        int array_length = userArray.length;
+        int array_length = statsArray.length;
 
-        for(double temp: userArray) {
+        for(double temp: statsArray) {
             standard_deviation += Math.pow(temp - mean, 2);
         }
         return Math.sqrt(standard_deviation/array_length);
@@ -152,8 +152,5 @@ public class Statistic implements Stats{
     }
 
 
-    public double getSD() {
-        return calculateSD(statsArray, this.getMean());
-    }
 
 }
