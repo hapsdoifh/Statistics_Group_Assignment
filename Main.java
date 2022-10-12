@@ -1,4 +1,3 @@
-
 import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
@@ -8,7 +7,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Statistic stat = new Statistic();
-        StandardDeviation SD = new StandardDeviation();
 
         double[] input_array = new double[10];
 
@@ -27,10 +25,10 @@ public class Main {
         for (double element: stat.getArray()) {
             System.out.print(element + " ");
         }
-        
+
         //calculate and display mean from user's data values
         System.out.println("\nThe mean is: " + stat.getMean());
-        
+
         //calculate and display median from user's data values
         System.out.println("\nThe median is: " + stat.getMedian());
 
@@ -43,16 +41,15 @@ public class Main {
 
         //calculate and display min value from user's data values
         System.out.println("\nThe smallest value is: " + stat.getMin());
-        
+
         //calculate and display range from user's data values
         System.out.println("\nThe smallest value is: " + stat.getRange());
-        
+
         //calculate and display quartiles from user's data values
         System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
 
-        stat.setSD();
         //calculate and display standard deviation from user's data values
-        System.out.println(String.format("\n\nThe Standard Deviation is: %.6f", stat.getSD()));
+        System.out.println(String.format("\n\nThe Standard Deviation is: %.6f", stat.getSD(stat.getArray(), stat.getMean())));
 
         //display box and whiskers plot of user's data values
         final BoxPlot demo = new BoxPlot("Box and Whiskers Plot", input_array);
@@ -65,7 +62,7 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    new NormalDistribution(stat.getMean(), stat.getSD()).setVisible(true);
+                    new NormalDistribution(stat.getMean(), stat.getSD(stat.getArray(), stat.getMean())).setVisible(true);
                 } catch (Exception exp) {
                     System.out.println("Could not display distribution graph.");
                 }
