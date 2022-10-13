@@ -1,5 +1,7 @@
 import java.util.Arrays;
+
 public class Polynomial{
+
     public double[] array;
     Polynomial(double[] userInput){
     array = userInput;

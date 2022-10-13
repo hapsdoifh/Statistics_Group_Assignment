@@ -28,6 +28,10 @@ public class Statistic implements Stats{
         return statsArray;
     }
     
+    public int arrayLength(){
+        return statsArray.length;
+    }
+    
     public double[] getQuartiles(){
         double[] results = new double[3];
         double[] Qpos = new double [3];
@@ -74,11 +78,11 @@ public class Statistic implements Stats{
         double sorted = 0.0;
         int highestCounter = 0;
 
-        for (int i = 0; i < statsArray.length + 1; i++){
+        for (int i = 0; i < statsArray.length; i++){
             double sorter = statsArray[i];
             int counter = 0;
 
-            for (int n = i +1; n < statsArray.length; n++){
+            for (int n = i; n < statsArray.length; n++){
                 if (sorter == statsArray[n]){
                     counter++;
                 }
@@ -100,7 +104,7 @@ public class Statistic implements Stats{
     public double getMax(){
         double highest = 0; 
     
-        for (int i = 0; i > statsArray.length; i++){
+        for (int i = 0; i < statsArray.length; i++){
             double listOrder = statsArray[i];
             
             if (listOrder > highest){
@@ -118,7 +122,7 @@ public class Statistic implements Stats{
     public double getMin(){
         double lowest = statsArray[0];
         double listOrder;
-        for (int i = 0; i > statsArray.length; i++){
+        for (int i = 0; i < statsArray.length; i++){
             listOrder = statsArray[i];
 
             if (listOrder < lowest){
@@ -168,6 +172,6 @@ public class Statistic implements Stats{
 
     }
 
-
+    
 
 }
