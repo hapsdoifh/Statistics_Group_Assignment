@@ -1,6 +1,8 @@
 import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,14 +10,14 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Statistic stat = new Statistic();
 
-        double[] input_array = {1,2,3,4,5,6,7,8,9,10};
+        double[] input_array = new double[10];
 
         //get user data
-        // for (int i = 0; i < 10; i++) {
-        //     System.out.println("Enter a number: ");
-        //     double num = input.nextDouble();
-        //     input_array[i] = num;
-        // }
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Enter a number: ");
+            double num = input.nextDouble();
+            input_array[i] = num;
+        }
         //set array to user data
 
         stat.setArray(input_array);
@@ -49,12 +51,11 @@ public class Main {
         System.out.println("\nThe range of this array is: " + stat.getRange());
 
         //calculate and display quartiles from user's data values
-        System.out.println("\nThe quartiles for this set of numbers are: " + stat.getQuartiles());
+        System.out.println("\nThe quartiles for this set of numbers are: " + Arrays.toString(stat.getQuartiles()));
 
         //calculate and display standard deviation from user's data values
         System.out.println(String.format("\n\nThe Standard Deviation is: %.6f", stat.getSD()));
 
-        outputGUI.outputGraph(stat);
         //display box and whiskers plot of user's data values
         final BoxPlot demo = new BoxPlot("Box and Whiskers Plot", input_array);
         demo.pack();

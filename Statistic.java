@@ -17,13 +17,11 @@ interface Stats{
 public class Statistic implements Stats{
     private double[] statsArray;
 
-    String polynomial = "";
-    double mean;
-    double median;
-    double mode;
+    //setter
     public void setArray(double[] inputArr){
         statsArray = inputArr;
     }
+    //getter
     public double[] getArray(){
         return statsArray;
     }
@@ -55,6 +53,7 @@ public class Statistic implements Stats{
 
   // mean
     public double getMean(){
+        double mean=0;
         for (int i= 0; i< statsArray.length; i++){
             mean += statsArray[i]; 
         }
@@ -64,6 +63,7 @@ public class Statistic implements Stats{
   //median
   public double getMedian(){
     Arrays.sort(statsArray);
+    double median;
         if (statsArray.length%2 != 0){  
             median = statsArray[statsArray.length/2];
         }
@@ -88,17 +88,17 @@ public class Statistic implements Stats{
                 }
             }
 
-        if (counter > highestCounter){ 
-            highestCounter = counter;
-            sorted = sorter;
-        }
-        else if (counter == highestCounter){
-            sorted = Math.min(sorter, sorted);
-        }
-    } // for loop bracket
+            if (counter > highestCounter){ 
+                highestCounter = counter;
+                sorted = sorter;
+            }
+            else if (counter == highestCounter){
+                sorted = Math.min(sorter, sorted);
+            }
+        } // for loop bracket
     
-  return highestCounter;
-  }
+        return highestCounter;
+    }
 
   // max (tyson)
     public double getMax(){
@@ -139,13 +139,14 @@ public class Statistic implements Stats{
 
     // Polynomial (Chase)
     public String getPolynomial() {
-      for (int i = 0; i < statsArray.length; i++) {
-        if (i <= statsArray.length - 2) {
-          polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1)) + " + ";
-        } else {
-          polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1));
+        String polynomial = "";
+        for (int i = 0; i < statsArray.length; i++) {
+            if (i <= statsArray.length - 2) {
+                polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1)) + " + ";
+            } else {
+                polynomial = polynomial + statsArray[i] + "x^" + (statsArray.length - (i + 1));
+            }
         }
-      }
         return polynomial;
   }
     
@@ -171,7 +172,5 @@ public class Statistic implements Stats{
         return Math.sqrt(standard_deviation/array_length);
 
     }
-
-    
 
 }
