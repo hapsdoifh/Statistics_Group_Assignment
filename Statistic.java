@@ -53,7 +53,6 @@ public class Statistic implements Stats{
         return statsArray;
     }
 
-
     //getters
 
     public double getMean(){
