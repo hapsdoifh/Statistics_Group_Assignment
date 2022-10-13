@@ -18,8 +18,8 @@ public class Main {
             double num = input.nextDouble();
             input_array[i] = num;
         }
-        //set array to user data
 
+        //set array to user data
         stat.setArray(input_array);
 
         //display user data
@@ -27,6 +27,9 @@ public class Main {
         for (double element: stat.getArray()) {
             System.out.print(element + " ");
         }
+
+        //sorts list of values
+        stat.SortList();
 
         //calculate and display mean from user's data values
         System.out.println("\nThe mean is: " + stat.getMean());
@@ -43,7 +46,7 @@ public class Main {
 
         //calculate and display min value from user's data values
         System.out.println("\nThe smallest value is: " + stat.getMin());
-        
+
         //calculate and display min value from user's data values
         System.out.println("\nA polynomial built from this set of numbers could look like: " + stat.getPolynomial());
 

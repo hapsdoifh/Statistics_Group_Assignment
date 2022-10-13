@@ -1,12 +1,16 @@
 import java.lang.Math;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 interface Stats{
-    public int arrayLength();
+    public double[] getArray();
     public double getMax();
     public double getMin();
     public double getMean();
     public double getMedian();
-    public double getMode();
+    public ArrayList<Double> getMode();
     public String getPolynomial();
     public double getRange();
     public double[] getQuartiles();
@@ -17,19 +21,20 @@ interface Stats{
 public class Statistic implements Stats{
     private double[] statsArray;
 
-    //setter
+    //setter for array of values
     public void setArray(double[] inputArr){
         statsArray = inputArr;
     }
-    //getter
+    //getter for array of values
     public double[] getArray(){
         return statsArray;
     }
-    
+
+
     public int arrayLength(){
         return statsArray.length;
     }
-    
+
     public double[] getQuartiles(){
         double[] results = new double[3];
         double[] Qpos = new double [3];
@@ -51,20 +56,17 @@ public class Statistic implements Stats{
 
     //getters
 
-  // mean
     public double getMean(){
         double mean=0;
         for (int i= 0; i< statsArray.length; i++){
-            mean += statsArray[i]; 
+            mean += statsArray[i];
         }
         return mean/statsArray.length;
     }
-  
-  //median
-  public double getMedian(){
-    Arrays.sort(statsArray);
-    double median;
-        if (statsArray.length%2 != 0){  
+
+    public double getMedian(){
+        double median;
+        if (statsArray.length%2 != 0){
             median = statsArray[statsArray.length/2];
         }
         else {
@@ -72,41 +74,40 @@ public class Statistic implements Stats{
         }
         return median;
     }
-    
-    // mode (tyson)
-    public double getMode(){
-        double sorted = 0.0;
-        int highestCounter = 0;
 
-        for (int i = 0; i < statsArray.length; i++){
-            double sorter = statsArray[i];
-            int counter = 0;
+    public ArrayList<Double> getMode(){
+        HashMap<Double, Integer> hash_map = new HashMap<Double, Integer>();
+        for (double element:statsArray) {
+            if(hash_map.containsKey(element)) {
+                hash_map.put(element, hash_map.get(element) + 1);
+            } else {
+                hash_map.put(element, 1);
+            }
+        }
 
-            for (int n = i; n < statsArray.length; n++){
-                if (sorter == statsArray[n]){
-                    counter++;
-                }
-            }
+        int maxMode=0;
 
-            if (counter > highestCounter){ 
-                highestCounter = counter;
-                sorted = sorter;
+        for (Map.Entry<Double,Integer> entry : hash_map.entrySet()) {
+            int freq = entry.getValue();
+            if (freq > maxMode) {
+                maxMode = freq;
             }
-            else if (counter == highestCounter){
-                sorted = Math.min(sorter, sorted);
+        }
+        ArrayList<Double> mode_list = new ArrayList<Double>();
+        for (Double key : hash_map.keySet()) {
+            if(hash_map.get(key) == maxMode){
+                mode_list.add(key);
             }
-        } // for loop bracket
-    
-        return highestCounter;
+        }
+        return mode_list;
     }
 
-  // max (tyson)
     public double getMax(){
-        double highest = 0; 
-    
+        double highest = 0;
+
         for (int i = 0; i < statsArray.length; i++){
             double listOrder = statsArray[i];
-            
+
             if (listOrder > highest){
                 highest = listOrder;
             }
@@ -115,10 +116,9 @@ public class Statistic implements Stats{
             }
         } // loop bracket
 
-        return highest; 
+        return highest;
     } // getter end bracket
 
-    // min (tyson)
     public double getMin(){
         double lowest = statsArray[0];
         double listOrder;
@@ -131,13 +131,12 @@ public class Statistic implements Stats{
 
             else if (listOrder >= lowest){
                 lowest = Math.min(listOrder, lowest);
-        }
+            }
         } // for loop bracket
 
         return lowest;
     } // getter end bracket
 
-    // Polynomial (Chase)
     public String getPolynomial() {
         String polynomial = "";
         for (int i = 0; i < statsArray.length; i++) {
@@ -148,12 +147,11 @@ public class Statistic implements Stats{
             }
         }
         return polynomial;
-  }
-    
-  // range (tyson)
+    }
+
     public double getRange(){
         // use new variables to make code less messy (less brackets)
-        double highest = getMax(); 
+        double highest = getMax();
         double lowest = getMin();
         return highest-lowest;
         //return Math.round((highest - lowest) *100.0) / 100.0;
